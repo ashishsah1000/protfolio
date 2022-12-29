@@ -1,9 +1,16 @@
 import Image from "next/image";
-import React from "react";
+import React,{useState} from "react";
 import Link from "next/link";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu,AiOutlineMail } from "react-icons/ai";
+import {FaLinkedinIn,FaGithub } from "react-icons/fa"
+import {BsFillPersonLinesFill} from "react-icons/bs"
 
 const Navbar = () => {
+  const [nav,setNav] = useState(false)
+  const handleNavFunction=()=>{
+    console.log("handle nav was called ")
+    setNav(!nav)
+  }
   const myLoader = ({ src }) => {
     return "https://upload.wikimedia.org/wikipedia/commons/6/6f/HP_logo_630x630.png";
   };
@@ -34,13 +41,15 @@ const Navbar = () => {
               </li>
             </Link>
           </ul>
-          <div className="md:hidden">
+          <div className="md:hidden cursor-pointer"  onClick={()=>{setNav(!nav)}} >
             <AiOutlineMenu size={25} />
           </div>
         </div>
       </div>
-      <div className="fixed left-0 top-0 w-full h-screen bg-black/50">
-        <div className="fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500">
+      <div className={nav?"md:hidden fixed left-0 top-0 w-full h-screen bg-black/50":""}>
+        <div className={nav?"md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500":
+          "fixed left-[-100%]  ease-in duration-500"
+        }>
           <div>
             <div className="flex w-full items-center justify-between">
               <Image
@@ -50,7 +59,9 @@ const Navbar = () => {
                 width="80"
                 alt="/"
               />
-              <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer">
+              <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer" 
+              onClick={()=>{setNav(!nav)}}
+              >
                 <AiOutlineClose />
               </div>
             </div>
@@ -61,7 +72,33 @@ const Navbar = () => {
             </div>
           </div>
           <div>
-            
+            <ul>
+              <Link href="/">
+                <li className="py-4 text-sm">Home</li>
+                <li className="py-4 text-sm">About</li>
+                <li className="py-4 text-sm">Skills</li>
+                <li className="py-4 text-sm">Projects</li>
+                 <li className="py-4 text-sm">Contacts</li>
+                
+              </Link>
+            </ul>
+            <div className="pt-40">
+              <p className="uppercase tracking-widest text-[#5651e5]">Let's Connect</p>
+            </div>
+            <div className="flex items-center justify-content-between my-4 w-full sm:w-[80%]">
+              <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+              <FaLinkedinIn />
+              </div>
+               <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+              <FaGithub />
+              </div>
+               <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+              <AiOutlineMail />
+              </div>
+               <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
+              <BsFillPersonLinesFill />
+              </div>
+            </div>
           </div>
         </div>
       </div>
