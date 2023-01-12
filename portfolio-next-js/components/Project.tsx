@@ -9,8 +9,12 @@ export default function Project({
       <div></div>
       <div className="flex-grow  border-l-emerald-700">
         <h2>{title}</h2>
-        {list.map((x) => {
-          return <span className="text-white mt-2">{x}</span>;
+        {list.map((x: any) => {
+          return (
+            <span key={Math.random()} className="text-white mt-2">
+              {x}
+            </span>
+          );
         })}
       </div>
     </div>

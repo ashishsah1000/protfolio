@@ -11,12 +11,12 @@ const Navbar = () => {
     console.log("handle nav was called ");
     setNav(!nav);
   };
-  const myLoader = ({ src }) => {
-    return "https://upload.wikimedia.org/wikipedia/commons/6/6f/HP_logo_630x630.png";
+  const myLoader = ({ src = "" }) => {
+    return "https://visualpharm.com/assets/720/Github-595b40b65ba036ed117d442f.svg";
   };
   return (
-    <div className="fixed w-full h-20 bg-black shadow-xl z-[100]">
-      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
+    <div className=" fixed top-0 w-full h-20 bg-[black] shadow-xl  navbar">
+      <div className="  flex justify-between items-center w-full h-full px-2 2xl:px-16">
         <Image
           loader={myLoader}
           src="https://upload.wikimedia.org/wikipedia/commons/6/6f/HP_logo_630x630.png"
